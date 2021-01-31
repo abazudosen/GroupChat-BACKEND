@@ -4,7 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const express = require("express");
 
-const { MONGODB } = require("./config");
+const db = require("./config").MONGODB;
 
 // Local Imports
 const usersRoute = require("./routes/users-route");
@@ -82,7 +82,7 @@ io.on("connection", (socket) => {
 // Connect to DB && Start server
 mongoose
   .connect(
-    "mongodb+srv://abazudosen:FSXvUDgcMkHyb42@messaging.ryocr.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    db,
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
   )
   .then(() => {
