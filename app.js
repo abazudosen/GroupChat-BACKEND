@@ -73,9 +73,11 @@ io.on('connection', socket => {
   });
 });
 
+console.log(process.env.MONGO_URI) 
+
 // Connect to DB && Start server
 mongoose
-  .connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+  .connect('mongodb://localhost:27017/chatGroup', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then(() => {
     server.listen(process.env.PORT || 5000, () =>
       console.log(`Server up and running on port ${process.env.PORT || 5000}!`)
